@@ -1,14 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { AppProvider } from "./Context";
+import reportWebVitals from "./reportWebVitals";
+import Products from "./Products";
+import ViewProduct from "./ViewProduct";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Products />,
+  },
+
+  {
+    path: "/launch/:id",
+    element: <ViewProduct />,
+  },
+]);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
