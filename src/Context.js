@@ -6,7 +6,7 @@ const AppProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
   const url = "https://api.spacexdata.com/v3/launches/";
 
-  const fetchData = async () => {
+  const fetchData = async (count = 10) => {
     const response = await fetch(url);
 
     const data = await response.json();
@@ -22,6 +22,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         product,
+        fetchData,
       }}
     >
       {children}
